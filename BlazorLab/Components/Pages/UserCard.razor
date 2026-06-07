@@ -6,8 +6,18 @@
     [Parameter]
     public string? Name { get; set; }
 
+    public UserCard()
+    {
+        Console.WriteLine("UserCard ctor");
+    }
+
     protected override void OnParametersSet()
     {
-        Console.WriteLine($"Name = {Name}");
+        Console.WriteLine($"Parameters: {Name}");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"Render. First={firstRender}");
     }
 }
