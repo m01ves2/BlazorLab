@@ -15,11 +15,12 @@
 
     private void ChangeName()
     {
-        userName = userName == "Ivan"
-            ? "Alex"
-            : "Ivan";
+        userName = "Alex";
+    }
 
-        Console.WriteLine("Home.ChangeName!");
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"HOME RENDER First={firstRender}");
     }
 
 }
