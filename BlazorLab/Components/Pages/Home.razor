@@ -15,7 +15,11 @@
 
     private void ChangeName()
     {
-        userName = "Alex";
+        userName = userName == "Ivan"
+            ? "Alex"
+            : "Ivan";
+
+        Console.WriteLine("Home.ChangeName!");
     }
 
 }
