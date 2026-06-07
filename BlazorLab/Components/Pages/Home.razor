@@ -1,8 +1,22 @@
 ﻿@page "/"
+@rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
-<UserCard Name="Ivan" />
+<UserCard Name="@userName" />
 
-Welcome to your new app.
+<button @onclick="ChangeName">
+    Change Name
+</button>
+
+@code {
+
+    private string userName = "Ivan";
+
+    private void ChangeName()
+    {
+        userName = "Alex";
+        Console.WriteLine("Home.ChangeName!");
+    }
+
+}
