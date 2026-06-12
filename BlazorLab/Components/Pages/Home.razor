@@ -1,26 +1,30 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
-<PageTitle>Home</PageTitle>
+<h3>Tasks</h3>
 
-<UserCard Name="@userName" />
+<p>Total: @tasks.Count</p>
 
-<button @onclick="ChangeName">
-    Change Name
-</button>
+@foreach (var task in tasks) {
+    <TaskItem Title="@task" OnDelete="() => RemoveTask(task)" />
+}
 
 @code {
-
-    private string userName = "Ivan";
-
-    private void ChangeName()
+    private List<string> tasks = new()
     {
-        userName = "Alex";
+        "Learn C#",
+        "Learn Blazor",
+        "Build Project"
+    };
+
+    private void RemoveTask(string task)
+    {
+        tasks.Remove(task);
+        Console.WriteLine($"Removed: {task}");
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         Console.WriteLine($"HOME RENDER First={firstRender}");
     }
-
 }

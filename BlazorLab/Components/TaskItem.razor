@@ -1,0 +1,25 @@
+﻿<div style="padding:10px; border:1px solid gray; margin:5px;">
+    <p>Task: @Title</p>
+
+    <button @onclick="OnClickDelete">
+        Delete
+    </button>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "";
+
+    [Parameter]
+    public EventCallback OnDelete { get; set; }
+
+    private async Task OnClickDelete()
+    {
+        await OnDelete.InvokeAsync();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"TASKITEM RENDER First={firstRender}");
+    }
+}
